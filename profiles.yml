@@ -1,0 +1,38 @@
+dbttraining:
+  outputs:
+    dev:
+      type: postgres
+      threads: 1
+      host: localhost
+      port: 5432
+      user: "{{ env_var('DBT_USER') }}"
+      pass: "{{ env_var('DBT_PASSWORD') }}"
+      dbname: "{{ env_var('DBT_DATABASE') }}"
+      schema: dbt_dev
+      keepalives_idle: 0
+      search_path: "public"
+
+    # Snowflake example (uncomment and configure as needed)
+    # prod:
+    #   type: snowflake
+    #   account: your_account
+    #   user: "{{ env_var('DBT_USER') }}"
+    #   password: "{{ env_var('DBT_PASSWORD') }}"
+    #   role: dbt_role
+    #   database: analytics
+    #   warehouse: compute_wh
+    #   schema: dbt_prod
+    #   threads: 4
+
+    # BigQuery example (uncomment and configure as needed)  
+    # prod:
+    #   type: bigquery
+    #   method: service-account
+    #   keyfile: /path/to/service-account.json
+    #   project: your-gcp-project
+    #   dataset: dbt_prod
+    #   threads: 4
+    #   timeout_seconds: 300
+    #   location: US
+
+  target: dev
