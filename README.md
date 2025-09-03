@@ -2,6 +2,18 @@
 
 This is a dbt (data build tool) training project configured for learning and development purposes.
 
+## Repository Access
+
+Clone this repository using either HTTPS or SSH:
+
+```bash
+# HTTPS (recommended for most users)
+git clone https://github.com/ksmuvva/dbttraining.git
+
+# SSH (for users with SSH keys configured)
+git clone git@github.com:ksmuvva/dbttraining.git
+```
+
 ## Project Structure
 
 ```
