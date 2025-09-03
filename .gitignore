@@ -1,0 +1,38 @@
+# dbt Build Artifacts
+target/
+dbt_packages/
+logs/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Database
+*.db
+*.sqlite
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+
+# Credentials (backup safety)
+profiles.yml.backup
+.env.local
