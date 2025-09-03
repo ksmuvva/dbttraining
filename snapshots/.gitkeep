@@ -1,0 +1,2 @@
+# This directory contains dbt snapshots
+# Add your slowly changing dimension snapshot definitions here
