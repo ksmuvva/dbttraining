@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: customer_analytics
+    description: "Customer analytics mart with key business metrics and segmentation"
+    columns:
+      - name: customer_id
+        description: "Unique identifier for each customer"
+        tests:
+          - unique
+          - not_null
+      - name: customer_name
+        description: "Full name of the customer"
+        tests:
+          - not_null
+      - name: email
+        description: "Customer email address"
+        tests:
+          - unique
+          - not_null
+      - name: customer_since
+        description: "Date when customer account was created"
+        tests:
+          - not_null
+      - name: customer_status
+        description: "Current status of customer account"
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['active', 'inactive']
+      - name: total_orders
+        description: "Total number of orders placed by customer"
+        tests:
+          - not_null
+      - name: total_order_value
+        description: "Sum of all order amounts for the customer"
+        tests:
+          - not_null
+      - name: total_completed_value
+        description: "Sum of completed order amounts only"
+        tests:
+          - not_null
+      - name: avg_order_value
+        description: "Average order amount for the customer"
+        tests:
+          - not_null
+      - name: customer_segment
+        description: "Business segment based on order behavior"
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['No Orders', 'Single Order', 'Regular Customer', 'VIP Customer']
+      - name: engagement_status
+        description: "Customer engagement status based on recent activity"
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Active', 'At Risk', 'Never Ordered', 'Churned']

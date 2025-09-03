@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Staging table for customer data with basic transformations"
+    columns:
+      - name: customer_id
+        description: "Unique identifier for each customer"
+        tests:
+          - unique
+          - not_null
+      - name: customer_name
+        description: "Full name of the customer"
+        tests:
+          - not_null
+      - name: email
+        description: "Customer email address"
+        tests:
+          - unique
+          - not_null
+      - name: created_at
+        description: "Date when customer account was created"
+        tests:
+          - not_null
+      - name: status
+        description: "Current status of customer account (active/inactive)"
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['active', 'inactive']
+      - name: is_recent_customer
+        description: "Boolean flag indicating if customer was created after start_date variable"
+
+  - name: stg_orders
+    description: "Staging table for order data with basic transformations"
+    columns:
+      - name: order_id
+        description: "Unique identifier for each order"
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "Foreign key to customer table"
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_customers')
+                field: customer_id
+      - name: order_date
+        description: "Date when order was placed"
+        tests:
+          - not_null
+      - name: order_amount
+        description: "Total amount of the order"
+        tests:
+          - not_null
+      - name: order_status
+        description: "Current status of the order"
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['completed', 'pending', 'cancelled']
+      - name: completed_amount
+        description: "Order amount if status is completed, otherwise 0"

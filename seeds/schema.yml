@@ -1,0 +1,23 @@
+version: 2
+
+seeds:
+  - name: products
+    description: "Sample product catalog data"
+    columns:
+      - name: product_id
+        description: "Unique identifier for each product"
+        tests:
+          - unique
+          - not_null
+      - name: product_name
+        description: "Name of the product"
+        tests:
+          - not_null
+      - name: category
+        description: "Product category"
+        tests:
+          - not_null
+      - name: price
+        description: "Product price in dollars"
+        tests:
+          - not_null
